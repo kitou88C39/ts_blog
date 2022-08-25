@@ -1,13 +1,100 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  background-color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Markdown Styles */
+/* Global */
+.markdown {
+  @apply text-sm leading-relaxed;
+}
+@screen sm {
+  .markdown {
+    @apply text-base;
+  }
+}
+@screen lg {
+  .markdown {
+    @apply text-lg;
+  }
+}
+
+/* Headers */
+.markdown h1,
+.markdown h2 {
+  @apply my-6 text-xl;
+}
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  @apply my-3 text-lg;
+}
+@screen sm {
+  .markdown h1,
+  .markdown h2 {
+    @apply text-2xl;
+  }
+  .markdown h3,
+  .markdown h4,
+  .markdown h5,
+  .markdown h6 {
+    @apply text-xl;
+  }
+}
+
+/* Links */
+.markdown a {
+  @apply text-blue-600;
+}
+.markdown a:hover {
+  @apply underline;
+}
+
+/* Paragraph */
+.markdown p {
+  @apply mb-4 leading-8 text-justify md:leading-10;
+}
+
+/* Lists */
+.markdown ul,
+.markdown ol {
+  @apply mb-4 ml-8;
+}
+.markdown li > p,
+.markdown li > ul,
+.markdown li > ol {
+  @apply mb-0;
+}
+.markdown ol {
+  @apply list-decimal;
+}
+.markdown ul {
+  @apply list-disc;
+}
+
+/* Blockquotes */
+.markdown blockquote {
+  @apply p-2 mx-2 my-2 mb-4 bg-gray-100 border-l-4 border-gray-400 rounded-r-lg;
+}
+.markdown blockquote > p {
+  @apply mb-0;
+}
+
+/* Images */
+.markdown img {
+  @apply shadow-lg;
+}
+
+/* Code */
+.markdown :not(pre) > code {
+  @apply p-1 font-semibold text-gray-600 rounded-lg bg-indigo-50;
+}
+
+/* Pre */
+.markdown pre {
+  @apply mx-2;
 }
