@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { deleteUser } from './userSlice';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
+import { AppState } from "../store";
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -18,7 +19,7 @@ const UserList: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.users);
+  const users = useSelector((store: AppState) => store.users);
 
   const handleRemoveUser = (id: any) => {
     dispatch(deleteUser({ id }));
