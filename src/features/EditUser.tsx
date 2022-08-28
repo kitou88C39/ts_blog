@@ -4,11 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../components/Button';
 import TextField from '../components/TextField';
 import { editUser } from './userSlice';
+import { AppState } from "../store";
 
 const EditUser: React.FC = () => {
   const params = useParams();
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.users);
+  const users = useSelector((store: AppState) => store.users);
   const navigate = useNavigate();
   const existingUser = users.filter((user: any) => user.id === params.id);
   const { name, email } = existingUser[0];

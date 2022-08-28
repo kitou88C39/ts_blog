@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import { deleteUser } from './userSlice';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
+import { AppState } from "../store";
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -18,7 +19,7 @@ const UserList: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.users);
+  const users = useSelector((store: AppState) => store.users);
 
   const handleRemoveUser = (id: any) => {
     dispatch(deleteUser({ id }));
@@ -49,7 +50,7 @@ const UserList: React.FC = () => {
                   </div>
                   <div className='relative flex-1 py-56'>
                     <span className='font-bold text-gray-800 markdown'>
-                      <ReactMarkdown children={markdown}>
+                      <ReactMarkdown>
                         {user.email}
                       </ReactMarkdown>
                     </span>
@@ -111,7 +112,9 @@ const UserList: React.FC = () => {
   return (
     <div>
       <Link to='/add-user'>
-        <Button>Add Post</Button>
+        <Button onClick={() => {
+            // TODO
+        }}>Add Post</Button>
       </Link>
       <div className='grid gap-2 md:grid-cols-1'>
         {users.length ? (
