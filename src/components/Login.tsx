@@ -1,8 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { NavigateFunction } from "react-router/lib/hooks";
 
 const Login: React.FC = () => {
-  const { login } = useContext();
+  const login = (email: string, password: string, navigate: NavigateFunction) => {
+    // TODO: 実際のログイン処理
+    console.log(email, password, navigate);
+  };
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
