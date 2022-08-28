@@ -50,7 +50,7 @@ const UserList: React.FC = () => {
                   </div>
                   <div className='relative flex-1 py-56'>
                     <span className='font-bold text-gray-800 markdown'>
-                      <ReactMarkdown children={markdown}>
+                      <ReactMarkdown>
                         {user.email}
                       </ReactMarkdown>
                     </span>
@@ -112,7 +112,9 @@ const UserList: React.FC = () => {
   return (
     <div>
       <Link to='/add-user'>
-        <Button>Add Post</Button>
+        <Button onClick={() => {
+            // TODO
+        }}>Add Post</Button>
       </Link>
       <div className='grid gap-2 md:grid-cols-1'>
         {users.length ? (
