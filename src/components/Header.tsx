@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/user-auth');
+    navigate('/login');
   };
 
   return (
@@ -15,12 +15,12 @@ const Header: React.FC = () => {
             Front-end Blog
           </span>
         </div>
-        <Link to='/user-auth'>
+        <Link to='/login'>
           <button
             onClick={handleClick}
             className='inline-block px-4 py-2 mt-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-emerald-700 hover:bg-white lg:mt-0'
           >
-            Login to admin
+            LogIn
           </button>
         </Link>
       </nav>

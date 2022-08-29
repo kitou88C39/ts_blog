@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import Button from '../components/Button';
 import TextField from '../components/TextField';
+import TextTitle from '../components/TextTitle';
 import { addUser } from './userSlice';
 
 const AddUser: React.FC = () => {
@@ -28,7 +29,7 @@ const AddUser: React.FC = () => {
 
   return (
     <div className='max-w-xl mx-auto mt-10'>
-      <TextField
+      <TextTitle
         label='Title'
         value={values.name}
         onChange={(e: any) => setValues({ ...values, name: e.target.value })}

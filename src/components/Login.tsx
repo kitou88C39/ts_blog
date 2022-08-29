@@ -1,8 +1,16 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { NavigateFunction } from 'react-router/lib/hooks';
 
 const Login: React.FC = () => {
-  const { login } = useContext();
+  const login = (
+    email: string,
+    password: string,
+    navigate: NavigateFunction
+  ) => {
+    // TODO: 実際のログイン処理
+    console.log(email, password, navigate);
+  };
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -14,16 +22,16 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className='relative flex flex-col justify-center min-h-screen overflow-hidden'>
-      <div className='w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl'>
-        <h1 className='text-3xl font-semibold text-center underline text-emerald-500'>
+    <div className='relative flex flex-col justify-center min-h-full overflow-hidden'>
+      <div className='w-1/2 p-5 m-auto bg-white rounded-md shadow-lg lg:max-w-xl'>
+        <h1 className='text-4xl font-bold text-center underline text-emerald-500'>
           LogIn
         </h1>
         <form className='mt-6' onSubmit={handleSubmit}>
           <div className='mb-2'>
             <label
               typeof='email'
-              className='block text-sm font-semibold text-gray-800'
+              className='block text-sm font-bold text-gray-800'
             >
               Email
             </label>
@@ -39,7 +47,7 @@ const Login: React.FC = () => {
           <div className='mb-2'>
             <label
               typeof='password'
-              className='block text-sm font-semibold text-gray-800'
+              className='block text-sm font-bold text-gray-800'
             >
               Password
             </label>
