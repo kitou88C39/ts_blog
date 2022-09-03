@@ -4,6 +4,12 @@ import Login from './components/Login';
 import AddUser from './features/AddUser';
 import EditUser from './features/EditUser';
 import UserList from './features/UserList';
+//import { Amplify } from "aws-amplify";
+// import { withAuthenticator } from "@aws-amplify/ui-react";
+// import @aws-amplify/ui-react/style.css;
+// import awsExports from "./aws-exports";
+// Amplify.configure(awsExports);
+
 
 function App() {
   return (

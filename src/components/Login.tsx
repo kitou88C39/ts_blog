@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavigateFunction } from 'react-router/lib/hooks';
+// import { Amplify } from "aws-amplify";
+// import { withAuthenticator } from "@aws-amplify/ui-react";
+// import @aws-amplify/ui-react/style.css;
+// import awsExports from "./features/aws-exports";
+// Amplify.configure(awsExports);
+
 
 const Login: React.FC = () => {
   const login = (

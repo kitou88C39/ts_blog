@@ -1,7 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { Amplify } from "aws-amplify";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import @aws-amplify/ui-react/style.css;
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
 
-const Header: React.FC = () => {
+const Header: React.FC = ({signOut,user}) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/login');
