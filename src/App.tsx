@@ -4,19 +4,40 @@ import Login from './components/Login';
 import AddUser from './features/AddUser';
 import EditUser from './features/EditUser';
 import UserList from './features/UserList';
-import { Amplify } from "aws-amplify";
-import { Authenticator } from "@aws-amplify/ui-react";
+import { Amplify, API, DataStore, graphqlOperation } from 'aws-amplify';
+//import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import awsExports from "./aws-exports";
+import awsExports from './aws-exports';
 Amplify.configure(awsExports);
+import { createTodo } from './graphql/mutations';
+import { listTodos } from './graphql/queries';
+import { useEffect, useState } from 'react';
 
-function App() {
+const App = () => {
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    fetchTodo();
+    DataStore.observe(Todos).subscribe(fetchTodo);
+  }, []);
+
+  const fetchTodo = async () => {
+    try {
+      const todoData = await API.graphql(graphqlOperation(listTodos));
+      const todos = todoData.data.listTodos.items;
+      console.log('todo list', todoList);
+      setTodos(todos);
+    } catch (error) {
+      console.log('error on fetching todos', error);
+    }
+  };
+
   return (
     <>
-    <div className='flex flex-col h-full bg-white shadow-lg max-h-16'>
-      <Header />
+      <div className='flex flex-col h-full bg-white shadow-lg max-h-16'>
+        <Header />
       </div>
-     <Authenticator>
+      {/* <Authenticator>
       {({ signOut, user }) => (
         <main>
         {user? (
@@ -29,8 +50,8 @@ function App() {
           <button onClick={signOut}>Sign out</button>
         </main>
       )}
-    </Authenticator>
-  
+    </Authenticator> */}
+
       <div className='container max-w-5xl px-2 pt-10 mx-auto md:pt-32'>
         <Routes>
           <Route path='/' element={<UserList />} />
@@ -39,9 +60,8 @@ function App() {
           <Route path='/login' element={<Login />} />
         </Routes>
       </div>
-    
     </>
   );
-}
+};
 
 export default App;

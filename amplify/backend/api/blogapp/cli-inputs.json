@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "blogapp",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/kitoumasaomi/Desktop/front_end_kadai4/blog_app/amplify/backend/api/blogapp/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}

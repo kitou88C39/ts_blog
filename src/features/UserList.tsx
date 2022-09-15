@@ -9,7 +9,6 @@ import { AppState } from '../store';
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  //onClick: (event: any) => void;
   children: string;
 };
 
