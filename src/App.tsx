@@ -9,7 +9,7 @@ import { Amplify, API, DataStore, graphqlOperation } from 'aws-amplify';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
-import { createTodo } from './graphql/mutations';
+//import { createTodo } from './graphql/mutations';
 import { listTodos } from './graphql/queries';
 import { useEffect, useState } from 'react';
 
@@ -18,15 +18,14 @@ const App = () => {
 
   useEffect(() => {
     fetchTodo();
-    DataStore.observe(Todos).subscribe(fetchTodo);
   }, []);
 
   const fetchTodo = async () => {
     try {
       const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todos = todoData.data.listTodos.items;
+      const todoList = todoData.data.listTodos.items;
       console.log('todo list', todoList);
-      setTodos(todos);
+      setTodos(todoList);
     } catch (error) {
       console.log('error on fetching todos', error);
     }
