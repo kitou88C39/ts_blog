@@ -1,12 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
 
 const Header: React.FC = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const handleClick = () => {
-    navigate('/login');
+    //navigate('/login');
+    // 認証状態を取得
     const { user, signOut } = useAuthenticator((context) => [context.user]);
   };
 
@@ -18,6 +19,7 @@ const Header: React.FC = () => {
             Front-end Blog
           </span>
         </div>
+
         <Authenticator>
           {({ signOut, user }) => (
             <main>
@@ -36,14 +38,6 @@ const Header: React.FC = () => {
             </main>
           )}
         </Authenticator>
-        {/* <Link to='/login'>
-          <button
-            onClick={handleClick}
-            className='inline-block px-4 py-2 mt-4 text-sm leading-none text-white border border-white rounded hover:border-transparent hover:text-emerald-700 hover:bg-white lg:mt-0'
-          >
-            LogIn
-          </button>
-        </Link> */}
       </nav>
     </div>
   );
