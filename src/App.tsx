@@ -9,28 +9,29 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 //import { createTodo } from './graphql/mutations';
-import { listTodos } from './graphql/queries';
-import { useEffect, useState } from 'react';
+//import { listTodos } from './graphql/queries';
+//import { useEffect, useState } from 'react';
 
 const App = () => {
   // 認証状態を取得
   //const { route } = useAuthenticator((context) => [context.route]);
-  const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    fetchTodo();
-  }, []);
+  // const [todos, setTodos] = useState([]);
 
-  const fetchTodo = async () => {
-    try {
-      const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todoList = todoData.data.listTodos.items;
-      console.log('todo list', todoList);
-      setTodos(todoList);
-    } catch (error) {
-      console.log('error on fetching todos', error);
-    }
-  };
+  // useEffect(() => {
+  //   fetchTodo();
+  // }, []);
+
+  // const fetchTodo = async () => {
+  //   try {
+  //     const todoData = await API.graphql(graphqlOperation(listTodos));
+  //     const todoList = todoData.data.listTodos.items;
+  //     console.log('todo list', todoList);
+  //     setTodos(todoList);
+  //   } catch (error) {
+  //     console.log('error on fetching todos', error);
+  //   }
+  // };
 
   return (
     <>

@@ -6,6 +6,8 @@ import { deleteUser } from './userSlice';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 import { AppState } from '../store';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import Header from '../components/Header';
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
@@ -16,6 +18,7 @@ const markdown = `Just a link: https://reactjs.com.`;
 
 const UserList: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { route } = useAuthenticator((context) => [context.route]);
 
   const dispatch = useDispatch();
   const users = useSelector((store: AppState) => store.users);
@@ -107,6 +110,7 @@ const UserList: React.FC = () => {
     ));
 
   return (
+    //route === 'authenticated' ? <Header /> : NULL;
     <div>
       <Link to='/add-user'>
         <Button
