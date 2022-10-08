@@ -10,15 +10,15 @@ const Header: React.FC = () => {
   //navigate('/login');
   // 認証状態を取得
   const { user, signOut } = useAuthenticator((context) => [context.user]);
-  const [isLogin, setIsLogin] = useState(false);
-  Auth.currentUserInfo()
-    .then((user: any) => {
-      if (user == null) setIsLogin(true);
-      else if (user != null) setIsLogin(false);
-    })
-    .catch((e: any) => {
-      console.log(e);
-    });
+  // const [isLogin, setIsLogin] = useState(false);
+  // Auth.currentUserInfo()
+  //   .then((user: any) => {
+  //     if (user == null) setIsLogin(true);
+  //     else if (user != null) setIsLogin(false);
+  //   })
+  //   .catch((e: any) => {
+  //     console.log(e);
+  //   });
   //};
 
   return (

@@ -1,18 +1,28 @@
+import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import AddUser from './features/AddUser';
 import EditUser from './features/EditUser';
 import UserList from './features/UserList';
-import { Amplify, API, DataStore, graphqlOperation } from 'aws-amplify';
+import { Auth, Amplify, API, DataStore, graphqlOperation } from 'aws-amplify';
 //import { useAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 Amplify.configure(awsExports);
 //import { createTodo } from './graphql/mutations';
 //import { listTodos } from './graphql/queries';
-//import { useEffect, useState } from 'react';
 
 const App = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  Auth.currentUserInfo()
+    .then((user: any) => {
+      if (user == null) setIsLogin(true);
+      else if (user != null) setIsLogin(false);
+    })
+    .catch((e: any) => {
+      console.log(e);
+    });
+
   // 認証状態を取得
   //const { route } = useAuthenticator((context) => [context.route]);
 
