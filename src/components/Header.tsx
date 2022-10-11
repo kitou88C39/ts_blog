@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { Authenticator } from '@aws-amplify/ui-react';
 
-const Header: React.FC = () => {
-  //const navigate = useNavigate();
-  //const handleClick = () => {
-  //navigate('/login');
+type Props = { isLogin: boolean };
+
+const Header: React.FC<Props> = (props) => {
+  const { isLogin } = props;
   // 認証状態を取得
   const { user, signOut } = useAuthenticator((context) => [context.user]);
   // const [isLogin, setIsLogin] = useState(false);

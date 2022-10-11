@@ -12,7 +12,7 @@ Amplify.configure(awsExports);
 //import { createTodo } from './graphql/mutations';
 //import { listTodos } from './graphql/queries';
 
-const App = () => {
+const App: React.FC = () => {
   const [isLogin, setIsLogin] = useState(false);
   Auth.currentUserInfo()
     .then((user: any) => {
@@ -46,7 +46,7 @@ const App = () => {
   return (
     <>
       <div className='flex flex-col h-full bg-white shadow-lg max-h-16'>
-        <Header />
+        <Header isLogin={isLogin} />
       </div>
 
       <div className='container max-w-5xl px-2 pt-10 mx-auto md:pt-32'>
