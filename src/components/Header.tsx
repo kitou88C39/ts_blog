@@ -35,7 +35,8 @@ const Header: React.FC<Props> = (props) => {
             <main>
               {user ? (
                 <h1 className='font-bold text-white'>
-                  Manager：{user.username}
+                  {isLogin ? 'LogIn' : 'LogOut'}
+                  {/* Manager：{user.username} */}
                 </h1>
               ) : (
                 <button
