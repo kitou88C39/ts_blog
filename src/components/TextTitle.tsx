@@ -5,7 +5,7 @@ type Props = {
   value: string;
 };
 
-const TextField: React.FC<Props> = ({ label, inputProps, onChange, value }) => {
+const TextTitle: React.FC<Props> = ({ label, inputProps, onChange, value }) => {
   return (
     <div className='flex flex-col w-full h-3/4'>
       <label className='mb-2 text-base text-gray-900'>{label}</label>
@@ -19,4 +19,4 @@ const TextField: React.FC<Props> = ({ label, inputProps, onChange, value }) => {
   );
 };
 
-export default TextField;
+export default TextTitle;

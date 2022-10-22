@@ -5,21 +5,24 @@ import Button from '../components/Button';
 import { deleteUser } from './userSlice';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
+import { AppState } from '../store';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import Header from '../components/Header';
 
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
-  //onClick: (event: any) => void;
-
   children: string;
+  isLogin: boolean;
 };
 
 const markdown = `Just a link: https://reactjs.com.`;
 
 const UserList: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
+  const { route } = useAuthenticator((context) => [context.route]);
 
   const dispatch = useDispatch();
-  const users = useSelector((store) => store.users);
+  const users = useSelector((store: AppState) => store.users);
 
   const handleRemoveUser = (id: any) => {
     dispatch(deleteUser({ id }));
@@ -50,9 +53,7 @@ const UserList: React.FC = () => {
                   </div>
                   <div className='relative flex-1 py-56'>
                     <span className='font-bold text-gray-800 markdown'>
-                      <ReactMarkdown children={markdown}>
-                        {user.email}
-                      </ReactMarkdown>
+                      <ReactMarkdown>{user.email}</ReactMarkdown>
                     </span>
                   </div>
                   <div className='flex items-center justify-end p-8 border-t border-solid rounded-b border-blueGray-200'>
@@ -91,14 +92,14 @@ const UserList: React.FC = () => {
                           />
                         </svg>
                       </button>
-                      {/* <Link to='/'> */}
-                      <button
-                        onClick={() => setShowModal(false)}
-                        className='px-4 py-2 text-sm text-white rounded-md focus:outline-none bg-emerald-500 hover:bg-emerald-700 hover:shadow-lg'
-                      >
-                        Return
-                      </button>
-                      {/* </Link> */}
+                      <Link to='/'>
+                        <button
+                          onClick={() => setShowModal(false)}
+                          className='px-4 py-2 text-sm text-white rounded-md focus:outline-none bg-emerald-500 hover:bg-emerald-700 hover:shadow-lg'
+                        >
+                          Return
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -110,9 +111,16 @@ const UserList: React.FC = () => {
     ));
 
   return (
+    //route === 'authenticated' ? <Header /> : NULL;
     <div>
       <Link to='/add-user'>
-        <Button>Add Post</Button>
+        <Button
+          onClick={() => {
+            // TODO
+          }}
+        >
+          Add Post
+        </Button>
       </Link>
       <div className='grid gap-2 md:grid-cols-1'>
         {users.length ? (
@@ -126,5 +134,4 @@ const UserList: React.FC = () => {
     </div>
   );
 };
-
 export default UserList;
