@@ -7,7 +7,10 @@ import TextField from '../components/TextField';
 import TextTitle from '../components/TextTitle';
 import { addUser } from './userSlice';
 
-const AddUser: React.FC = () => {
+type Props = { isLogin: boolean };
+
+const AddUser: React.FC<Props> = (props) => {
+  const { isLogin } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -42,6 +45,7 @@ const AddUser: React.FC = () => {
         onChange={(e: any) => setValues({ ...values, email: e.target.value })}
         inputProps={{ type: 'content', placeholder: 'Enter a content' }}
       />
+
       <Button onClick={handleAddUser}>Submit</Button>
     </div>
   );

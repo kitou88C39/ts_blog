@@ -7,7 +7,10 @@ import { editUser } from './userSlice';
 import { AppState } from '../store';
 import TextTitle from '../components/TextTitle';
 
-const EditUser: React.FC = () => {
+type Props = { isLogin: boolean };
+
+const EditUser: React.FC<Props> = (props) => {
+  const { isLogin } = props;
   const params = useParams();
   const dispatch = useDispatch();
   const users = useSelector((store: AppState) => store.users);

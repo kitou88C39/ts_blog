@@ -12,6 +12,7 @@ import Header from '../components/Header';
 type Props = {
   onClick: (event: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   children: string;
+  isLogin: boolean;
 };
 
 const markdown = `Just a link: https://reactjs.com.`;
