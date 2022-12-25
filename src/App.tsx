@@ -35,9 +35,9 @@ const App: React.FC = () => {
   const fetchTodo = async () => {
     try {
       const todoData = await API.graphql(graphqlOperation(listTodos));
-      const todoList = todoData.data.listTodos.items;
-      console.log('todo list', todoList);
-      setTodos(todoList);
+      //const todoList = todoData.data.listTodos.items;
+      //console.log('todo list', todoList);
+      //setTodos(todoList);
     } catch (error) {
       console.log('error on fetching todos', error);
     }
