@@ -1,8 +1,9 @@
 # 町内会及びアパート向け 情報共有サービス Kairanban
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+「医療従事者の就職をもっとクリアに！」　
 
-## Available Scripts
+医療従事者同士で職場の口コミを共有する事で、医療従事者の就職ミスマッチを減らす事を目的としたWebアプリです。
+## 制作背景
 
 In the project directory, you can run:
 
